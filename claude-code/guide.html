@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code 之路 — Agent 101</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🧠 <span class="gradient">Claude Code</span> 之路</h1>
+            <p class="subtitle">国产大模型原生支持 Anthropic API，直接对接 Claude Code。</p>
+        </header>
+
+        <!-- Intro -->
+        <div class="card">
+            <h2>工作原理</h2>
+            <p class="desc">
+                Claude Code 是 Anthropic 公司的 AI 编程助手。所有国产大模型平台都已经原生支持 Anthropic API 格式，只需要在配置文件中指向对应平台的
+                <code>/anthropic</code> 端点即可，无需任何中间代理。
+            </p>
+            <pre>
+Claude Code  ──→  国产大模型平台的 /anthropic 端点
+             直接连接，无需任何代理
+        </pre>
+
+            <div class="info">
+                <strong>🍎 Mac 用户必读</strong>
+                苹果电脑可能会阻止你运行脚本。解决方法：按住 <code>Control</code> 键 → 点击脚本文件 → 选择「打开」→ 再点「打开」。首次运行后即可正常双击。
+            </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="card">
+            <h2><span class="step-badge">1</span> 准备运行环境</h2>
+            <p class="desc">脚本会检查 Node.js 并配置国内加速镜像。</p>
+            <div class="action">
+                <p>双击运行：</p>
+                <p>Windows: <span class="mono">tools/windows/1-setup-env.bat</span></p>
+                <p>Mac: <span class="mono">tools/mac/1-setup-env.command</span></p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card">
+            <h2><span class="step-badge">2</span> 安装并配置</h2>
+            <p class="desc">
+                安装 Claude Code 并选择你的 AI 大脑。脚本会自动将配置写入 <code>~/.claude/settings.json</code>。
+            </p>
+
+            <p class="desc"><strong>⚡ 先获取你的 API Key：</strong></p>
+            <div class="providers">
+                <a href="https://platform.deepseek.com/api_keys" target="_blank" class="provider">
+                    <div class="provider-name">DeepSeek</div>
+                    <div class="provider-desc">深度求索 · V3.2</div>
+                </a>
+                <a href="https://platform.moonshot.cn/console/api-keys" target="_blank" class="provider">
+                    <div class="provider-name">Kimi（国内版）</div>
+                    <div class="provider-desc">月之暗面 · K2.5</div>
+                </a>
+                <a href="https://platform.moonshot.ai/console/api-keys" target="_blank" class="provider">
+                    <div class="provider-name">Kimi（海外版）</div>
+                    <div class="provider-desc">Moonshot AI · K2.5</div>
+                </a>
+                <a href="https://bigmodel.cn/usercenter/apikeys" target="_blank" class="provider">
+                    <div class="provider-name">智谱（国内版）</div>
+                    <div class="provider-desc">清华出品 · GLM-5</div>
+                </a>
+                <a href="https://z.ai/model-api" target="_blank" class="provider">
+                    <div class="provider-name">智谱（海外版）</div>
+                    <div class="provider-desc">z.ai 节点 · GLM-5</div>
+                </a>
+                <a href="https://platform.minimaxi.com/user-center/basic-information" target="_blank" class="provider">
+                    <div class="provider-name">MiniMax（国内版）</div>
+                    <div class="provider-desc">海螺 AI · M2.5</div>
+                </a>
+                <a href="https://platform.minimax.io/" target="_blank" class="provider">
+                    <div class="provider-name">MiniMax（海外版）</div>
+                    <div class="provider-desc">MiniMax · M2.5</div>
+                </a>
+                <a href="https://bailian.console.aliyun.com/#/model-market" target="_blank" class="provider">
+                    <div class="provider-name">通义千问 Qwen（国内版）</div>
+                    <div class="provider-desc">阿里云 · Qwen3</div>
+                </a>
+                <a href="https://chat.qwen.ai/" target="_blank" class="provider">
+                    <div class="provider-name">通义千问 Qwen（海外版）</div>
+                    <div class="provider-desc">Alibaba Cloud · Qwen3</div>
+                </a>
+            </div>
+
+            <div class="info">
+                <strong>💡 如何获取 API Key</strong>
+                点击上面的链接 → 注册账号 → 找到「API 密钥」或「API Keys」页面 → 点击「创建」→ 复制生成的密钥。
+            </div>
+
+            <div class="action">
+                <p>复制好 API Key 后，双击运行：</p>
+                <p>Windows: <span class="mono">tools/windows/2-install-and-configure.bat</span></p>
+                <p>Mac: <span class="mono">tools/mac/2-install-and-configure.command</span></p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card">
+            <h2><span class="step-badge">3</span> 启动！</h2>
+            <p class="desc">选择工作目录并启动 Claude Code。</p>
+            <div class="action">
+                <p>双击运行：</p>
+                <p>Windows: <span class="mono">tools/windows/3-start.bat</span></p>
+                <p>Mac: <span class="mono">tools/mac/3-start.command</span></p>
+            </div>
+
+            <div class="info">
+                <strong>🎮 试试你的第一个 Prompt</strong>
+                启动后，在 <code>&gt;</code> 提示符后输入：<br><br>
+                <em>"帮我写一个可以在浏览器里玩的贪吃蛇游戏，界面要现代好看，用深色主题。"</em>
+            </div>
+        </div>
+
+        <!-- Model mapping reference -->
+        <div class="card"
+            style="border: 1px solid var(--primary); background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(0,184,148,0.05));">
+            <h2>📊 模型映射参考</h2>
+            <p class="desc">
+                每家大模型厂商的模型名称各不相同。Claude Code 内部使用 Opus / Sonnet / Haiku 三个槽位，
+                接入国产大模型时需要将它们映射到实际的模型名。映射不正确会导致启动报错。
+            </p>
+            <p class="desc">
+                这份参考文档详细列出了 DeepSeek、Kimi、智谱、MiniMax、Qwen 五家厂商的映射方案，包括统一映射和分层映射策略的区别。
+            </p>
+            <div class="action">
+                <a href="model-mapping.html"
+                    style="display:inline-block; background:var(--primary); color:white; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600; transition:opacity 0.2s;">查看模型映射参考
+                    →</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><a href="model-mapping.html" style="color:var(--primary)">📊 模型映射参考</a> · <a href="../index.html"
+                    style="color:var(--primary)">← 返回首页</a></p>
+            <p style="margin-top:10px;">Agent 101 Toolkit V2 © 2026</p>
+        </footer>
+    </div>
+</body>
+
+</html>

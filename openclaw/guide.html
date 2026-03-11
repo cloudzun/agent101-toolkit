@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 之路 — Agent 101</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🐾 <span class="gradient">OpenClaw</span> 之路</h1>
+            <p class="subtitle">开源免费的 AI Agent 平台，原生支持国产大模型。</p>
+        </header>
+
+        <!-- Security Warning -->
+        <div class="card">
+            <div class="warning" style="margin:0;">
+                <strong>🔴 安全警告 — 请认真阅读</strong>
+                OpenClaw 是一个<strong>拥有完全文件系统访问权限</strong>的开源 AI Agent。它可以读取、修改、甚至删除你电脑上的任何文件。<br><br>
+                <strong>千万不要</strong>在以下环境中使用：<br>
+                ❌ 装有公司源代码的办公电脑<br>
+                ❌ 存有敏感个人资料（银行信息、证件照等）的电脑<br><br>
+                ✅ 推荐在个人学习电脑或虚拟机 (VM) 中使用。
+            </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="card">
+            <h2><span class="step-badge">1</span> 准备运行环境</h2>
+            <p class="desc">OpenClaw 需要 Node.js 引擎。脚本会自动检查并配置国内加速镜像和 Git HTTPS。</p>
+            <div class="action">
+                <p>双击运行：</p>
+                <p>Windows: <span class="mono">tools/windows/1-setup-env.bat</span></p>
+                <p>Mac: <span class="mono">tools/mac/1-setup-env.command</span></p>
+            </div>
+            <div class="info">
+                <strong>🍎 Mac 用户</strong>
+                首次运行可能被 Gatekeeper 阻止。请：按住 <code>Control</code> → 点击脚本 → 选择「打开」。
+            </div>
+            <div class="info" style="margin-top:12px;">
+                <strong>⚙️ 自动配置</strong>
+                <br>
+                • NPM 淘宝镜像（加速下载）<br>
+                • Git HTTPS（解决 GitHub 访问问题）
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card">
+            <h2><span class="step-badge">2</span> 安装 OpenClaw</h2>
+            <p class="desc">使用脚本一键安装 OpenClaw CLI 工具。脚本会先显示安全警告并请求你确认。</p>
+            <div class="action">
+                <p>双击运行：</p>
+                <p>Windows: <span class="mono">tools/windows/2-install-openclaw.bat</span></p>
+                <p>Mac: <span class="mono">tools/mac/2-install-openclaw.command</span></p>
+            </div>
+            <div class="info">
+                <strong>⚙️ 安装说明</strong>
+                <br>
+                • 使用 <code>--ignore-scripts</code> 跳过 C++ 模块编译（避免国内网络失败）<br>
+                • 安装过程可能需要 2-5 分钟，请耐心等待<br>
+                • 安装完成后运行 <code>openclaw --version</code> 验证
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card">
+            <h2><span class="step-badge">3</span> 初始化配置 (openclaw onboard)</h2>
+            <p class="desc">
+                OpenClaw 有一个交互式的初始化向导，需要在终端中手动运行。这一步<strong>无法通过双击脚本完成</strong>，需要你打开终端手动操作。别害怕，跟着下面的步骤来就好！
+            </p>
+
+            <h3 style="margin-top:20px; font-size:1.1rem;">📝 操作步骤</h3>
+
+            <p class="desc"><strong>第一步：打开终端</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li><strong>Mac</strong>: 按 <code>Command + 空格</code>，输入 <code>Terminal</code>，回车</li>
+                <li><strong>Windows</strong>: 按 <code>Win + R</code>，输入 <code>cmd</code>，回车</li>
+            </ul>
+
+            <p class="desc"><strong>第二步：运行初始化向导</strong></p>
+            <pre>openclaw onboard</pre>
+
+            <p class="desc"><strong>第三步：按照向导提示操作</strong></p>
+            <p class="desc">向导会依次询问以下内容，请按照说明作答：</p>
+
+            <div style="margin: 16px 0;">
+                <p><strong>① 选择模型提供商</strong></p>
+                <p class="desc">选择 <span class="mono">openai-compatible</span> (OpenAI 兼容模式)。这样可以对接国产大模型。</p>
+
+                <p><strong>② 输入 API Base URL</strong></p>
+                <p class="desc">根据你之前申请的大模型平台，输入对应的地址：</p>
+                <pre>
+# DeepSeek
+https://api.deepseek.com/v1
+
+# Kimi（国内版）
+https://api.moonshot.cn/v1
+
+# Kimi（海外版）
+https://api.moonshot.ai/v1
+
+# 智谱（国内版）
+https://open.bigmodel.cn/api/paas/v4
+
+# 智谱（海外版）
+https://api.z.ai/api/paas/v4
+
+# MiniMax（国内版）
+https://api.minimaxi.chat/v1
+
+# MiniMax（海外版）
+https://api.minimax.io/v1
+
+# 通义千问 Qwen（国内版）
+https://dashscope.aliyuncs.com/compatible-mode/v1
+
+# 通义千问 Qwen（海外版）
+https://dashscope-intl.aliyuncs.com/compatible-mode/v1</pre>
+
+                <p><strong>③ 输入 API Key</strong></p>
+                <p class="desc">粘贴你之前复制的那串以 <code>sk-</code> 开头的密钥。</p>
+
+                <p><strong>④ 选择模型名称</strong></p>
+                <p class="desc">根据你选择的平台输入模型名：</p>
+                <pre>
+# DeepSeek:               deepseek-chat
+# Kimi（国内/海外版）:      kimi-k2.5
+# 智谱（国内/海外版）:      glm-5
+# MiniMax（国内/海外版）:   MiniMax-M2.5
+# Qwen（国内/海外版）:      qwen3-coder-plus</pre>
+
+                <p><strong>⑤ 选择消息通道</strong></p>
+                <p class="desc">向导会询问你想通过什么方式和 OpenClaw 对话。选择 <span class="mono">feishu</span> (飞书)。详细配置见下一步。</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="card">
+            <h2><span class="step-badge">4</span> 配置飞书通道 (Feishu)</h2>
+            <p class="desc">
+                OpenClaw 需要一个消息通道来接收你的指令并回复你。在国内，我们使用<strong>飞书 (Feishu)</strong> 作为通道。你需要在飞书开放平台创建一个"机器人应用"。
+            </p>
+
+            <h3 style="margin-top:20px; font-size:1.1rem;">📝 飞书机器人创建步骤</h3>
+
+            <p class="desc"><strong>4.1 注册/登录飞书开放平台</strong></p>
+            <div class="providers" style="grid-template-columns: 1fr;">
+                <a href="https://open.feishu.cn/app" target="_blank" class="provider">
+                    <div class="provider-name">🔗 打开飞书开放平台</div>
+                    <div class="provider-desc">如果没有飞书账号，需要先注册一个。</div>
+                </a>
+            </div>
+
+            <p class="desc"><strong>4.2 创建企业自建应用</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li>进入开发者后台 → 点击「创建企业自建应用」</li>
+                <li>应用名称填写：<span class="mono">OpenClaw Bot</span>（随意取名）</li>
+                <li>应用描述填写：<span class="mono">我的 AI 编程助手</span></li>
+                <li>点击「创建」</li>
+            </ul>
+
+            <p class="desc"><strong>4.3 开启机器人能力</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li>进入刚创建的应用 → 左侧「添加应用能力」</li>
+                <li>找到「机器人」→ 点击「添加」</li>
+            </ul>
+
+            <p class="desc"><strong>4.4 获取 App ID 和 App Secret</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li>左侧「基础信息 → 凭证与基础信息」</li>
+                <li>复制 <strong>App ID</strong> 和 <strong>App Secret</strong>（这两个值很重要！）</li>
+            </ul>
+
+            <p class="desc"><strong>4.5 配置权限</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li>左侧「开发配置 → 权限管理 → API 权限」</li>
+                <li>搜索并添加以下三个权限：</li>
+                <li><span class="mono">im:message.p2p_msg:readonly</span> — 读取用户发给机器人的单聊消息</li>
+                <li><span class="mono">im:message:send_as_bot</span> — 以应用的身份发消息</li>
+                <li><span class="mono">im:message.group_at_msg:readonly</span> — 接收群聊中@机器人消息事件</li>
+            </ul>
+
+            <p class="desc"><strong>4.6 配置事件订阅</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li>左侧「开发配置 → 事件与回调 → 事件配置」</li>
+                <li>订阅模式选择：<strong>长连接</strong>（不需要公网 IP，最简单！）</li>
+                <li>点击「添加事件」，搜索并添加：<span class="mono">im.message.receive_v1</span>（接收消息）</li>
+            </ul>
+
+            <p class="desc"><strong>4.7 发布应用</strong></p>
+            <ul style="color: var(--text-muted); margin-bottom:16px; padding-left:20px;">
+                <li>左侧「应用发布 → 版本管理与发布」</li>
+                <li>点击「创建版本」→ 设置可用范围 → 点击「申请发布」</li>
+                <li>等待管理员审批（个人版飞书一般自动通过）</li>
+            </ul>
+
+            <p class="desc"><strong>4.8 在 OpenClaw 中配置飞书凭证</strong></p>
+            <p class="desc">打开终端，运行以下命令（替换成你自己的 ID 和 Secret）：</p>
+            <pre>
+openclaw config set channels.feishu.enabled true
+openclaw config set channels.feishu.appId "你的App_ID"
+openclaw config set channels.feishu.appSecret "你的App_Secret"</pre>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="card">
+            <h2><span class="step-badge">5</span> 启动 Gateway 并开始使用</h2>
+            <p class="desc">一切配置完成后，启动 OpenClaw 的 Gateway（网关）守护进程。它会常驻后台，等待你通过飞书发送消息。</p>
+
+            <p class="desc"><strong>启动 Gateway：</strong></p>
+            <pre>openclaw gateway</pre>
+
+            <p class="desc">看到类似 <span class="mono">Gateway is running...</span> 的提示后，打开飞书，搜索你创建的机器人名称（如 OpenClaw
+                Bot），发送一条消息：</p>
+
+            <div class="info">
+                <strong>🎮 试试你的第一个 Prompt</strong>
+                <br><br>
+                <em>"帮我写一个可以在浏览器里玩的贪吃蛇游戏，界面要现代好看。"</em>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Gateway 必须保持运行</strong>
+                关闭终端窗口后，Gateway 会一起关闭，飞书上的机器人也会停止响应。如果想让它一直运行，可以使用 <span class="mono">nohup openclaw gateway
+                    &amp;</span> 或配合系统的 launchd/systemd 服务。
+            </div>
+        </div>
+
+        <!-- API Key Links -->
+        <div class="card">
+            <h2>📎 附录：API Key 申请链接</h2>
+            <div class="providers">
+                <a href="https://platform.deepseek.com/api_keys" target="_blank" class="provider">
+                    <div class="provider-name">DeepSeek</div>
+                    <div class="provider-desc">深度求索 · V3.2</div>
+                </a>
+                <a href="https://platform.moonshot.cn/console/api-keys" target="_blank" class="provider">
+                    <div class="provider-name">Kimi（国内版）</div>
+                    <div class="provider-desc">月之暗面 · K2.5</div>
+                </a>
+                <a href="https://platform.moonshot.ai/console/api-keys" target="_blank" class="provider">
+                    <div class="provider-name">Kimi（海外版）</div>
+                    <div class="provider-desc">Moonshot AI · K2.5</div>
+                </a>
+                <a href="https://bigmodel.cn/usercenter/apikeys" target="_blank" class="provider">
+                    <div class="provider-name">智谱（国内版）</div>
+                    <div class="provider-desc">清华出品 · GLM-5</div>
+                </a>
+                <a href="https://z.ai/model-api" target="_blank" class="provider">
+                    <div class="provider-name">智谱（海外版）</div>
+                    <div class="provider-desc">z.ai 节点 · GLM-5</div>
+                </a>
+                <a href="https://platform.minimaxi.com/user-center/basic-information" target="_blank" class="provider">
+                    <div class="provider-name">MiniMax（国内版）</div>
+                    <div class="provider-desc">海螺 AI · M2.5</div>
+                </a>
+                <a href="https://platform.minimax.io/" target="_blank" class="provider">
+                    <div class="provider-name">MiniMax（海外版）</div>
+                    <div class="provider-desc">MiniMax · M2.5</div>
+                </a>
+                <a href="https://bailian.console.aliyun.com/#/model-market" target="_blank" class="provider">
+                    <div class="provider-name">通义千问 Qwen（国内版）</div>
+                    <div class="provider-desc">阿里云 · Qwen3</div>
+                </a>
+                <a href="https://chat.qwen.ai/" target="_blank" class="provider">
+                    <div class="provider-name">通义千问 Qwen（海外版）</div>
+                    <div class="provider-desc">Alibaba Cloud · Qwen3</div>
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p><a href="../index.html" style="color:var(--primary)">← 返回首页</a></p>
+            <p style="margin-top:10px;">Agent 101 Toolkit V2 © 2026</p>
+        </footer>
+    </div>
+</body>
+
+</html>
